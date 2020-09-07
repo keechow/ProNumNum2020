@@ -17,7 +17,11 @@ str_dict = {"year":str, "month":str, "date":str, "day":str,
 df_dmc = pd.read_excel("DMC30Aug.xlsx", sheet_name="1", converters=str_dict)
 df_mag = pd.read_excel("MAG30Aug.xlsx", sheet_name="1", converters=str_dict)
 df_toto = pd.read_excel("TOTO30Aug.xlsx", sheet_name="1", converters=str_dict)
-
+#column = ["year", "month", "date", "day",
+# "p1", "p2", "p3", "s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10",
+# "c1", "c2", "c3", "c4", "c5", "c6", "c7", "c8", "c9", "c10"]
 print(len(df_dmc))
 print(len(df_mag))
 print(len(df_toto))
+
+df_dmc_p123 = df_dmc.groupby
