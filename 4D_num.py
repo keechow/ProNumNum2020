@@ -17,8 +17,3 @@ class Numbers:
             self.all_num.append(str_each)
     def get_all_num(self):
         return self.all_num
-
-
-my_num = Numbers()
-
-print(my_num.get_num())
