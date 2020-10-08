@@ -17,12 +17,16 @@ class Numbers:
     clean_list_2 = []  # list_2 with overlapping elements from list_double removed
 
     def __init__(self):
+        self.gen_all_num()
+        self.separate_num()
+
+
+    def gen_all_num(self):
         for each in range(10000):
             str_each = str(each)
             while len(str_each) < 4:
                 str_each = "0" + str_each
             self.all_num.append(str_each)
-
 
 # calculate how many times a a digit is repeated in a number
     def calc_occurence(self, str_num):
@@ -35,7 +39,7 @@ class Numbers:
         return occurence
 
 # check if given number is  double-double
-    def check_double_double(str_num):
+    def check_double_double(self, str_num):
         check_digit = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
         for each in check_digit:
             count = str_num.count(each)
@@ -48,29 +52,31 @@ class Numbers:
 
 # run gen_num() and separate num into respective num categorie
     def separate_num(self):
-        num_list = self.all_num()
+        num_list = self.all_num
         for each in num_list:
-            occur = calc_occurence(each)
+            occur = self.calc_occurence(each)
             if occur == 1:
-                list_1.append(each)
+               self.list_1.append(each)
             elif occur == 2:
-                list_2.append(each)
+                self.list_2.append(each)
             elif occur == 3:
-                list_3.append(each)
+                self.list_3.append(each)
             else:
-                list_4.append(each)
+                self.list_4.append(each)
 
-        for each in list_2:
-            if check_double_double(each):
-                list_double.append(each)
+        for each in self.list_2:
+            if self.check_double_double(each):
+                self.list_double.append(each)
 
         # there are same number in list_2 and list_double. we want to remove these numbers from list_2
-        set_list2 = set(list_2)
-        set_list_double = set(list_double)
-        clean_list_2 = list(set_list2.difference(set_list_double))
+        set_list2 = set(self.list_2)
+        set_list_double = set(self.list_double)
+        self.clean_list_2 = list(set_list2.difference(set_list_double))
 
     def get_all_num(self):
         return self.all_num
     def
 
     def get
+
+
