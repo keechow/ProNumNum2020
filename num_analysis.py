@@ -117,10 +117,24 @@ def check_num_cat(num):
             return 6
         else:
             return 12
+    elif occur == 3:
+        return 8
     else:
         return 4
+
+def check_num_range(num):
+    return int(num[0])
+
+def check_num_sum(num_str):
+    total_sum = 0
+    for digit in num_str:
+        digit_int = int(digit)
+        total_sum += digit_int
+    return total_sum
+
 
     
 ###################################
 #Below are codes use during testing#
 ###################################
+i24 = get_list_1()

@@ -20,7 +20,6 @@ class Numbers:
         self.gen_all_num()
         self.separate_num()
 
-
     def gen_all_num(self):
         for each in range(10000):
             str_each = str(each)
@@ -75,8 +74,22 @@ class Numbers:
 
     def get_all_num(self):
         return self.all_num
-    def
 
-    def get
+    def get_i24(self):
+        return self.list_1
+
+    def get_i12(self):
+        return self.list_2
+
+    def get_i8(self):
+        return self.list_3
+
+    def get_i12_double(self):
+        return self.list_double
+
+    def get_i12_clean(self):
+        return self.clean_list_2
+
+
 
 
