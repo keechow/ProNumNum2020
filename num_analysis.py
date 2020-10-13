@@ -9,23 +9,15 @@ Return: None
 Author: Project Echo Telion <echo.telion@gmail.com>
 
 """
-list_1 = []    #list containing numbers with no repeating digit
-list_2 = []    #list containing numbers with 2 repeating digits
-list_3 = []    #list containing numbers with 3 repeating digits
-list_4 = []    #list containing numbers with 4 repeating digits
-list_double = []    #list containing numbers with 2 pairs of digits
-clean_list_2 = []    #list_2 with overlapping elements from list_double removed
-
 #generate a string list containing element 0001 to 9999
 def gen_num():
     num = 0
     str_num_list = []
-    while num < 10000:
-        element_ = str(num)
-        while len(element_) < 4:
-            element_ = "0" + element_
-        str_num_list.append(element_)
-        num += 1
+    for each in range(10000):
+        each_str = str(each)
+        while len(each_str) < 4:
+            each_str = "0" + each_str
+        str_num_list.append(each_str)
     return str_num_list
 
 #calculate how many times a a digit is repeated in a number
@@ -50,70 +42,67 @@ def check_double_double(str_num):
                     return True
     return False
 
-#run gen_num() and separate num into respective num categorie
-def separate_num():
-    global list_1
-    global list_2
-    global list_3
-    global list_4
-    global list_double
-    global clean_list_2
-
-    num_list = gen_num()
-    for each in num_list:
-        occur = calc_occurence(each)
-        if occur == 1:
-            list_1.append(each)
-        elif occur == 2:
-            list_2.append(each)
-        elif occur == 3:
-            list_3.append(each)
-        else:
-            list_4.append(each)
-
-    for each in list_2:
-        if check_double_double(each):
-            list_double.append(each)
-
-    #there are same number in list_2 and list_double. we want to remove these numbers from list_2
-    set_list2 = set(list_2)
-    set_list_double = set(list_double)
-    clean_list_2 = list(set_list2.difference(set_list_double))
-
-def get_list_1():
+#return a list of i24 num in str
+def get_i24():
     # return list of number with no repeating digit
-    separate_num()
-    return list_1
+    r_list = []
+    for each in gen_num():
+        if calc_occurence(each) == 1:
+            r_list.append(each)
+    return r_list
 
-def get_list_2():
+#return a list of i12 num in str
+def get_i12():
     # return list of number with 2 repeating digits
-    separate_num()
-    return clean_list_2
+    r_list = []
+    for each in gen_num():
+        if calc_occurence(each) == 2:
+            r_list.append(each)
+    return r_list
 
-def get_list_3():
+#return a list of i8 num in str
+def get_i8():
     # return list of number with 3 repeating digits
-    separate_num()
-    return list_3
+    r_list = []
+    for each in gen_num():
+        if calc_occurence(each) == 3:
+            r_list.append(each)
+    return r_list
 
-def get_list_4():
+#return a list of double-double num in str
+def get_double():
+    # return list of number with 2 repeating digits
+    r_list = []
+    for each in gen_num():
+        if calc_occurence(each) == 2 and check_double_double(each):
+            r_list.append(each)
+    return r_list
+
+#return a list of i4 num in str
+def get_i4():
     # return list of number with 4 repeating digits
-    separate_num()
-    return list_4
+    r_list = []
+    for each in gen_num():
+        if calc_occurence(each) == 4:
+            r_list.append(each)
+    return r_list
 
-def get_list_double():
-    #return list of number with double double repeating digits
-    separate_num()
-    return list_double
+#return a list of i12 without double-double num in str
+def get_i12_no_double():
+    set_i12 = set(get_i12())
+    set_double = set(get_double())
+    i12_no_double = list(set_i12.difference(set_double))
+    return i12_no_double
 
-def check_num_cat(num):
+def check_num_cat(num_str):
     #return the num cat for given num
     #24 or 12 or 6 or 4
-    occur = calc_occurence(num)
+    occur = calc_occurence(num_str)
 
     if occur == 1:
         return 24
     elif occur == 2:
-        if check_double_double(num):
+        if check_double_double(num_str):
             return 6
         else:
             return 12
@@ -122,8 +111,8 @@ def check_num_cat(num):
     else:
         return 4
 
-def check_num_range(num):
-    return int(num[0])
+def check_num_range(num_str):
+    return int(num_str[0])
 
 def check_num_sum(num_str):
     total_sum = 0
@@ -137,4 +126,22 @@ def check_num_sum(num_str):
 ###################################
 #Below are codes use during testing#
 ###################################
-i24 = get_list_1()
+all_num = gen_num()
+i24 = get_i24()
+i12 = get_i12()
+i8 = get_i8()
+i6 = get_i4()
+i4 = get_double()
+i12_no_double = get_i12_no_double()
+
+num_sum_list = []
+for each in range(37):
+    num_sum_list.append([])
+
+for each in all_num:
+    idx = check_num_sum(each)
+    num_sum_list[idx].append(each)
+
+for each in num_sum_list:
+    print(len(each))
+

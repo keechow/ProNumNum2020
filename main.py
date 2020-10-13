@@ -23,5 +23,3 @@ df_toto = pd.read_excel("TOTO30Aug.xlsx", sheet_name="1", converters=str_dict)
 print(len(df_dmc))
 print(len(df_mag))
 print(len(df_toto))
-
-df_dmc_p123 = df_dmc.groupby
