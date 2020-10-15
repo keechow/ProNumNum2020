@@ -141,7 +141,10 @@ for each in range(37):
 for each in all_num:
     idx = check_num_sum(each)
     num_sum_list[idx].append(each)
-
+counter = 0
 for each in num_sum_list:
-    print(len(each))
+    len_str = str(len(each))
+    counter_str = str(counter)
+    print(counter_str +" : " + len_str)
+    counter += 1
 
