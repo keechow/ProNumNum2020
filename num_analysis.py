@@ -103,7 +103,7 @@ def check_num_cat(num_str):
         return 24
     elif occur == 2:
         if check_double_double(num_str):
-            return 6
+            return 22
         else:
             return 12
     elif occur == 3:
@@ -126,25 +126,3 @@ def check_num_sum(num_str):
 ###################################
 #Below are codes use during testing#
 ###################################
-all_num = gen_num()
-i24 = get_i24()
-i12 = get_i12()
-i8 = get_i8()
-i6 = get_i4()
-i4 = get_double()
-i12_no_double = get_i12_no_double()
-
-num_sum_list = []
-for each in range(37):
-    num_sum_list.append([])
-
-for each in all_num:
-    idx = check_num_sum(each)
-    num_sum_list[idx].append(each)
-counter = 0
-for each in num_sum_list:
-    len_str = str(len(each))
-    counter_str = str(counter)
-    print(counter_str +" : " + len_str)
-    counter += 1
-
