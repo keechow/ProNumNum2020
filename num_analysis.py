@@ -94,6 +94,15 @@ def get_i12_no_double():
     i12_no_double = list(set_i12.difference(set_double))
     return i12_no_double
 
+def get_num_sum_table():
+    num_sum_list = []  # list to store all num in accordance to their num_sum
+    for each in range(37):  # num_sum is indicated using element's index in num_sum_list
+        num_sum_list.append([])
+    for each in gen_num():
+        idx = check_num_sum(each)
+        num_sum_list[idx].append(each)
+    return num_sum_list
+
 def check_num_cat(num_str):
     #return the num cat for given num
     #24 or 12 or 6 or 4
@@ -120,6 +129,47 @@ def check_num_sum(num_str):
         digit_int = int(digit)
         total_sum += digit_int
     return total_sum
+
+def calc_norm_num_sum(idx):
+    #return the value of max-min normalization for num-sum value
+    #min num_sum value = 1
+    #max num_sum value = 670
+    #norm = (value - min) / (max - min)
+
+    num_sum_table = get_num_sum_table()
+    value = len(num_sum_table[idx]) #data in num_sum_table element is list of 4D_num_str. we want the amount of 4dnum in that idx
+
+    min = 1
+    max = 670
+    value_min = value - min
+    max_min = max - min
+    return (value_min/max_min)
+
+def calc_norm_num_cat(num_cat):
+    #return the value of max-min normalization for num_cat value
+    #min num_cat value = 10
+    #max num_sum value = 5040
+    #norm = (value - min) / (max - min)
+    value = 0
+    if num_cat == 24:
+        value = 5040 # num of i24 numbers = 5040
+    elif num_cat == 12:
+        value = 4320  #i12
+    elif num_cat == 8:
+        value = 360   #i8
+    elif num_cat == 4:
+        value = 10    #i4
+    else:
+        value = 270   #double-double num
+
+    min = 10
+    max = 5040
+    value_min = value - min
+    max_min = max - min
+    return (value_min/max_min)
+
+
+
 
 
     
