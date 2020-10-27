@@ -30,6 +30,7 @@ df_toto = pd.read_excel("TOTO30Aug_ymd.xlsx", sheet_name="1", converters=str_dic
 
 print(df_dmc.head())
 
+print(df_dmc.describe())
 
 #column = ["year", "month", "date", "day",
 # "p1", "p2", "p3", "s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10",

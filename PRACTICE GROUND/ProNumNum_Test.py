@@ -26,3 +26,5 @@ df = pd.read_excel("DMC_test.xlsx", sheet_name="1", converters=str_dict, index_c
 for key, data in df.iterrows():
     print(key, data)
     print()
+
+print(df.describe())
