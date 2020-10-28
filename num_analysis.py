@@ -49,9 +49,7 @@ def get_i24():
     for each in gen_num():
         if calc_occurence(each) == 1:
             r_list.append(each)
-    return r_list
-
-#return a list of i12 num in str
+    return r_list # list of i12 num in str
 def get_i12():
     # return list of number with 2 repeating digits
     r_list = []
@@ -168,7 +166,9 @@ def calc_norm_num_cat(num_cat):
     max_min = max - min
     return (value_min/max_min)
 
-
+def print_ls_el(list1):
+    for each in list1:
+        print(each)
 
 
 
