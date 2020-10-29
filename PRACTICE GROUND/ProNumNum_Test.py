@@ -68,7 +68,7 @@ p1_df = pd.DataFrame(p1_dict_data)
 """
 print(p1_df)
 
-print(p1_df.to_string())
+# print(p1_df.to_string()) to display the full table in df
 
 """
 
