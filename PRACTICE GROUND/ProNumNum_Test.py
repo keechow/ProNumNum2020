@@ -47,35 +47,30 @@ p1_num_range_ls = []
 p1_num_cat_ls = []
 p1_norm_num_sum = []
 p1_norm_num_cat = []
+p1_norm_total = []
 for each in p1_list:
     n_sum = na.check_num_sum(each)
     n_range = na.check_num_range(each)
     n_cat = na.check_num_cat(each)
-    norm_num_sum = na.calc_norm_num_sum(n_sum)
-    norm_num_cat = na.calc_norm_num_cat(n_cat)
+    norm_num_sum = round(na.calc_norm_num_sum(n_sum),6)
+    norm_num_cat = round(na.calc_norm_num_cat(n_cat),6)
 
     p1_num_sum_ls.append(n_sum)
     p1_num_range_ls.append(n_range)
     p1_num_cat_ls.append(n_cat)
     p1_norm_num_sum.append(norm_num_sum)
     p1_norm_num_cat.append(norm_num_cat)
-print(p1_list)
-print("================================================")
-print("============ NUM SUM ==========")
-print(p1_num_sum_ls)
-print()
-print("================================================")
-print("============ NUM RANGE ==========")
-print(p1_num_range_ls)
-print()
-print("================================================")
-print("============ NUM CAT ==========")
-print(p1_num_cat_ls)
-print()
-print("================================================")
-print("============ NORM NUM SUM ==========")
-print(p1_norm_num_sum)
-print()
-print("================================================")
-print("============ NORM NUM CAT ==========")
-print(p1_norm_num_cat)
+    p1_norm_total.append(round(norm_num_sum+norm_num_cat,6))
+df_key = ["4D_Num","num-cat","num-range","num-sum","norm-score-cat", "norm-score-sum","norm-score-total"]
+p1_dict_data = {df_key[0]: p1_list, df_key[1]:p1_num_cat_ls, df_key[2]:p1_num_range_ls, df_key[3]:p1_num_sum_ls, df_key[4]:p1_norm_num_cat, df_key[5]:p1_norm_num_sum, df_key[6]:p1_norm_total}
+
+p1_df = pd.DataFrame(p1_dict_data)
+"""
+print(p1_df)
+
+print(p1_df.to_string())
+
+"""
+
+for each in range(37):
+    print(str(each) + " : " + str(na.calc_norm_num_sum(each)))
