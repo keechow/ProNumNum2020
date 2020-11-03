@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 import xlrd
-
+import num_analysis as na
 """
 Converting result xlsx into dataframe 
 
@@ -23,11 +23,6 @@ df_toto = pd.read_excel("TOTO30Aug_ymd.xlsx", sheet_name="1", converters=str_dic
 
 #separate df according to prize category, pcat
 
-df_pcat123_dmc = df_dmc[["ymd", "day", "p1", "p2", "p3"]]
-df_pcat123_mag = df_mag[["ymd", "day", "p1", "p2", "p3"]]
-df_pcat123_toto = df_toto[["ymd", "day", "p1", "p2", "p3"]]
-#       print(df_pcat123_dmc.columns)
-#       >>>    Index(['ymd', 'day', 'p1', 'p2', 'p3'], dtype='object')
 
 df_pcats_dmc = df_dmc[["ymd", "day", "s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"]]
 df_pcats_mag = df_mag[["ymd", "day", "s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10"]]
@@ -41,5 +36,21 @@ df_pcatc_toto = df_toto[["ymd", "day", "c1", "c2", "c3", "c4", "c5", "c6", "c7",
 #       print(df_pcatc_dmc.columns)
 #       >>> Index(['ymd', 'day', 'c1', 'c2', 'c3', 'c4', 'c5', 'c6', 'c7', 'c8', 'c9', 'c10'],dtype='object')
 
+df_pcat123_dmc = df_dmc[["ymd", "day", "p1", "p2", "p3"]]
+df_pcat1_dmc = df_dmc[["ymd", "day", "p1"]]
+df_pcat2_dmc = df_dmc[["ymd", "day", "p2"]]
+df_pcat3_dmc = df_dmc[["ymd", "day", "p3"]]
 
-print(df_pcats_dmc.head(10).to_string())
+df_pcat123_mag = df_mag[["ymd", "day", "p1", "p2", "p3"]]
+df_pcat1_mag = df_mag[["ymd", "day", "p1"]]
+df_pcat2_mag = df_mag[["ymd", "day", "p2"]]
+df_pcat3_mag = df_mag[["ymd", "day", "p3"]]
+
+df_pcat123_toto = df_toto[["ymd", "day", "p1", "p2", "p3"]]
+df_pcat1_toto = df_toto[["ymd", "day", "p1"]]
+df_pcat2_toto = df_toto[["ymd", "day", "p2"]]
+df_pcat3_toto = df_toto[["ymd", "day", "p3"]]
+
+#       print(df_pcat123_dmc.columns)
+#       >>>    Index(['ymd', 'day', 'p1', 'p2', 'p3'], dtype='object')
+
