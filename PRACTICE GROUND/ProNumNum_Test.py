@@ -41,7 +41,38 @@ for key, data in df.iterrows():
 #3. append result into a news list
 #4. add the list as a new column into the df
 
+def df_na_4d(input_list):
+    # input: a list of str 4d num
+    # output: a dict data to build a df
+    # pass each element in list1 into na check modules and norm score modules
+    num_sum_ls = []
+    num_range_ls = []
+    num_cat_ls = []
+    norm_num_sum = []
+    norm_num_cat = []
+    norm_total = []
+    for each in input_list:
+        n_sum = na.check_num_sum(each)
+        n_range = na.check_num_range(each)
+        n_cat = na.check_num_cat(each)
+        norm_numsum = round(na.calc_norm_num_sum(n_sum), 6) # round float to 6 decimals
+        norm_numcat = round(na.calc_norm_num_cat(n_cat), 6)
+
+        num_sum_ls.append(n_sum)
+        num_range_ls.append(n_range)
+        num_cat_ls.append(n_cat)
+        norm_num_sum.append(norm_numsum)
+        norm_num_cat.append(norm_numcat)
+        norm_total.append(round(norm_numsum + norm_numcat, 6))
+    df_key = ["4D_Num", "num-cat", "num-range", "num-sum", "norm-score-cat", "norm-score-sum", "norm-score-total"]
+    p1_dict_data = {df_key[0]: input_list, df_key[1]: num_cat_ls, df_key[2]: num_range_ls, df_key[3]: num_sum_ls,
+                    df_key[4]: norm_num_cat, df_key[5]: norm_num_sum, df_key[6]: norm_total}
+
+    return p1_dict_data
+
 p1_list = list(df["p1"])
+
+"""
 p1_num_sum_ls = []
 p1_num_range_ls = []
 p1_num_cat_ls = []
@@ -63,14 +94,11 @@ for each in p1_list:
     p1_norm_total.append(round(norm_num_sum+norm_num_cat,6))
 df_key = ["4D_Num","num-cat","num-range","num-sum","norm-score-cat", "norm-score-sum","norm-score-total"]
 p1_dict_data = {df_key[0]: p1_list, df_key[1]:p1_num_cat_ls, df_key[2]:p1_num_range_ls, df_key[3]:p1_num_sum_ls, df_key[4]:p1_norm_num_cat, df_key[5]:p1_norm_num_sum, df_key[6]:p1_norm_total}
-
-p1_df = pd.DataFrame(p1_dict_data)
 """
+
+p1_df = pd.DataFrame(df_na_4d(p1_list))
+
 print(p1_df)
 
-# print(p1_df.to_string()) to display the full table in df
+print(p1_df.to_string()) #to display the full table in df
 
-"""
-
-for each in range(37):
-    print(str(each) + " : " + str(na.calc_norm_num_sum(each)))

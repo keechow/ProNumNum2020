@@ -54,3 +54,10 @@ df_pcat3_toto = df_toto[["ymd", "day", "p3"]]
 #       print(df_pcat123_dmc.columns)
 #       >>>    Index(['ymd', 'day', 'p1', 'p2', 'p3'], dtype='object')
 
+#2020.11.03] After separating result df into different df according to respective pcat, we want to put each 4D into na module to get numcat,numrange,numsum,norm score
+
+#convert df to list, then put list into na.get_df_4d
+#use output from na.get_df_4d to build a new DF
+
+pcat1_dmc_ls = list(df_pcat1_dmc)
+df_pcat1_dmc_ls = na.get_df_4d(pcat1_dmc_ls)

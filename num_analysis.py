@@ -170,6 +170,34 @@ def print_ls_el(list1):
     for each in list1:
         print(each)
 
+def get_df_4d(input_list):
+    # input: a list of str 4d num
+    # output: a dict data to build a df
+    # pass each element in list1 into na check modules and norm score modules
+    num_sum_ls = []
+    num_range_ls = []
+    num_cat_ls = []
+    norm_num_sum = []
+    norm_num_cat = []
+    norm_total = []
+    for each in input_list:
+        n_sum = check_num_sum(each)
+        n_range = check_num_range(each)
+        n_cat = check_num_cat(each)
+        norm_numsum = round(calc_norm_num_sum(n_sum), 6) # round float to 6 decimals
+        norm_numcat = round(calc_norm_num_cat(n_cat), 6)
+
+        num_sum_ls.append(n_sum)
+        num_range_ls.append(n_range)
+        num_cat_ls.append(n_cat)
+        norm_num_sum.append(norm_numsum)
+        norm_num_cat.append(norm_numcat)
+        norm_total.append(round(norm_numsum + norm_numcat, 6))
+    df_key = ["4D_Num", "num-cat", "num-range", "num-sum", "norm-score-cat", "norm-score-sum", "norm-score-total"]
+    p1_dict_data = {df_key[0]: input_list, df_key[1]: num_cat_ls, df_key[2]: num_range_ls, df_key[3]: num_sum_ls,
+                    df_key[4]: norm_num_cat, df_key[5]: norm_num_sum, df_key[6]: norm_total}
+
+    return p1_dict_data
 
 
     
