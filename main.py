@@ -59,5 +59,15 @@ df_pcat3_toto = df_toto[["ymd", "day", "p3"]]
 #convert df to list, then put list into na.get_df_4d
 #use output from na.get_df_4d to build a new DF
 
-pcat1_dmc_ls = list(df_pcat1_dmc)
-df_pcat1_dmc_ls = na.get_df_4d(pcat1_dmc_ls)
+pcat1_dmc_ls = list(df_pcat1_dmc["p1"])
+#pcat2_dmc_ls = list(df_pcat2_dmc["p1"])
+#pcat3_dmc_ls = list(df_pcat3_dmc["p1"])
+
+dict_pcat1_dmc_ls = na.get_df_4d(pcat1_dmc_ls)
+#df_pcat2_dmc_ls = na.get_df_4d(pcat2_dmc_ls)
+#df_pcat3_dmc_ls = na.get_df_4d(pcat3_dmc_ls)
+
+df_pcat1_dmc_na = pd.DataFrame(dict_pcat1_dmc_ls)
+
+print(df_pcat1_dmc_na.to_string())
+
