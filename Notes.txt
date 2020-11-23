@@ -1,0 +1,10 @@
+2020.11.23
+Read the current number.
+Send to num analysis.
+Get num cat, num score, etc
+
+Read the next number, send to num analysis. Get num cat, num score, etc
+
+Compare between both number. 
+Count occurence, current 
+
