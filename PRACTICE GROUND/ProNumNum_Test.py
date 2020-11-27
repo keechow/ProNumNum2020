@@ -20,6 +20,7 @@ str_dict = {"ymd":str, "day":str,
             "c1":str, "c2":str, "c3":str, "c4":str, "c5":str, "c6":str, "c7":str, "c8":str, "c9":str, "c10":str}
 
 df = pd.read_excel("DMC_test.xlsx", sheet_name="1", converters=str_dict, index_col="ymd")
+
 # index_col = "ymd" changes the indexing number from 0,1,2,... to ymd number
 
 # use loc[index] to get a particular row
@@ -70,35 +71,23 @@ def df_na_4d(input_list):
 
     return p1_dict_data
 
-p1_list = list(df["p1"])
-
-"""
-p1_num_sum_ls = []
-p1_num_range_ls = []
-p1_num_cat_ls = []
-p1_norm_num_sum = []
-p1_norm_num_cat = []
-p1_norm_total = []
-for each in p1_list:
-    n_sum = na.check_num_sum(each)
-    n_range = na.check_num_range(each)
-    n_cat = na.check_num_cat(each)
-    norm_num_sum = round(na.calc_norm_num_sum(n_sum),6)
-    norm_num_cat = round(na.calc_norm_num_cat(n_cat),6)
-
-    p1_num_sum_ls.append(n_sum)
-    p1_num_range_ls.append(n_range)
-    p1_num_cat_ls.append(n_cat)
-    p1_norm_num_sum.append(norm_num_sum)
-    p1_norm_num_cat.append(norm_num_cat)
-    p1_norm_total.append(round(norm_num_sum+norm_num_cat,6))
-df_key = ["4D_Num","num-cat","num-range","num-sum","norm-score-cat", "norm-score-sum","norm-score-total"]
-p1_dict_data = {df_key[0]: p1_list, df_key[1]:p1_num_cat_ls, df_key[2]:p1_num_range_ls, df_key[3]:p1_num_sum_ls, df_key[4]:p1_norm_num_cat, df_key[5]:p1_norm_num_sum, df_key[6]:p1_norm_total}
-"""
+p1_df = df["p1"]
+p1_df.reset_index()
+print(p1_df)
+p1_list = list(p1_df)
 
 p1_df = pd.DataFrame(df_na_4d(p1_list))
 
-print(p1_df)
+#print(df["p1"])
+#print (p1_list)
+#print(p1_df.to_string()) #to display the full table in df
+p1_label = []
+p1_value = []
+for label, value in p1_df.iterrows():
+    p1_label.append(label)
+    p1_value.append(value)
+    print(label)
+    print(value)
 
-print(p1_df.to_string()) #to display the full table in df
+
 

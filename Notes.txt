@@ -1,10 +1,20 @@
 2020.11.23
-Read the current number.
-Send to num analysis.
-Get num cat, num score, etc
+1. 	Read the current number.
+	Send to num analysis.
+	Get num cat, num score, etc
 
-Read the next number, send to num analysis. Get num cat, num score, etc
+2. 	Read the next number, send to num analysis. Get num cat, num score, etc
+	Compare between both number. 
+	Count occurence, current 
 
-Compare between both number. 
-Count occurence, current 
+3. Feel lost on how to analyze the draw result further.
 
+4. Things that I think I should learn
+	a. matplotlib - illustration
+	b. probability
+	c. mac learning
+
+
+2020.11.27
+
+Test looping

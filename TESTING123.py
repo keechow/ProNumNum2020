@@ -21,3 +21,8 @@ for each in new_ls:
     print()
     print(each)
 
+"""
+for i, j in df.iterrows(): 
+    print(i, j) 
+    print() 
+"""
