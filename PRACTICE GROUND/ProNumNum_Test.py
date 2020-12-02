@@ -19,10 +19,9 @@ str_dict = {"ymd":str, "day":str,
             "s1":str, "s2":str, "s3":str, "s4":str, "s5":str, "s6":str, "s7":str, "s8":str, "s9":str, "s10":str,
             "c1":str, "c2":str, "c3":str, "c4":str, "c5":str, "c6":str, "c7":str, "c8":str, "c9":str, "c10":str}
 
-df = pd.read_excel("DMC_test.xlsx", sheet_name="1", converters=str_dict, index_col="ymd")
+df = pd.read_excel("DMC_test.xlsx", sheet_name="1", converters=str_dict)
 
 # index_col = "ymd" changes the indexing number from 0,1,2,... to ymd number
-
 # use loc[index] to get a particular row
 # eg. draw_result_20200801 = df.loc[20200801]
 
@@ -71,23 +70,19 @@ def df_na_4d(input_list):
 
     return p1_dict_data
 
-p1_df = df["p1"]
-p1_df.reset_index()
-print(p1_df)
-p1_list = list(p1_df)
+p1_df = df[["ymd","p1"]].copy() #extract p1 data from original df and make it into a new df
 
-p1_df = pd.DataFrame(df_na_4d(p1_list))
+p1_list = list(p1_df["p1"])
+
+p1_info_df = pd.DataFrame(df_na_4d(p1_list))
 
 #print(df["p1"])
 #print (p1_list)
 #print(p1_df.to_string()) #to display the full table in df
+p1_ymd = list(p1_df["ymd"])
 p1_label = []
 p1_value = []
-for label, value in p1_df.iterrows():
-    p1_label.append(label)
+for label, value in p1_info_df.iterrows():
     p1_value.append(value)
-    print(label)
-    print(value)
 
-
-
+print(type(p1_value[0]))
